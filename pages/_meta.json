@@ -1,0 +1,15 @@
+{
+  "index": "Introduction",
+  "about": {
+    "title": "Website",
+    "type": "page",
+    "href": "https://obaol.com",
+    "newWindow": true
+  },
+  "contact": {
+    "title": "Internal Site",
+    "type": "page",
+    "href": "https://automate.obaol.com",
+    "newWindow": true
+  }
+}
