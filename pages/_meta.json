@@ -1,5 +1,9 @@
 {
   "index": "Introduction",
+  "commission": "Commission Structure",
+  "RS": "RS - Research Specialist",
+  "BDA": "BDA - Business Development Associate",
+  "RP": "RP - Relationship Partner",
   "about": {
     "title": "Website",
     "type": "page",
@@ -7,9 +11,9 @@
     "newWindow": true
   },
   "contact": {
-    "title": "Internal Site",
+    "title": "Overview",
     "type": "page",
-    "href": "https://automate.obaol.com",
+    "href": "https://overview.obaol.com",
     "newWindow": true
   }
 }
