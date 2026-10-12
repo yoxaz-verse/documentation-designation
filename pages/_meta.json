@@ -1,18 +1,16 @@
 {
-  "index": "Introduction",
-  "commission": "Commission Structure",
-  "ARM": "ARM - Associate Relationship Manager",
-  "RS": "RS - Research Specialist",
-    "about": {
-    "title": "Website",
+  "index": {
+    "title": "Departments",
+    "display": "hidden"
+  },
+  "departments": {
+    "title": "Departments",
+    "type": "page"
+  },
+  "about": {
+    "title": "OBAOL Website ↗",
     "type": "page",
     "href": "https://obaol.com",
-    "newWindow": true
-  },
-  "contact": {
-    "title": "Overview",
-    "type": "page",
-    "href": "https://overview.obaol.com",
     "newWindow": true
   }
 }

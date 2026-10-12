@@ -1,0 +1,19 @@
+:root {
+  --obaol-green: #0f6b49;
+  --obaol-green-dark: #084c35;
+  --obaol-mint: #e8f5ee;
+  --obaol-ink: #17221d;
+  --obaol-muted: #64736b;
+  --obaol-line: #dce7e1;
+}
+html { scroll-behavior: smooth; }
+body { color: var(--obaol-ink); }
+::selection { background: #bfe4d0; }
+.nextra-content { max-width: 1120px !important; }
+.nextra-content h1, .nextra-content h2, .nextra-content h3 { letter-spacing: -0.025em; }
+.nextra-content table { display: table; width: 100%; }
+.nextra-content th { background: #f1f7f4; color: #244b3b; }
+.nextra-content a { text-underline-offset: 3px; }
+button, input, textarea, select { font: inherit; }
+button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible, summary:focus-visible, a:focus-visible { outline: 3px solid #55b889; outline-offset: 2px; }
+@media (max-width: 720px) { .nextra-content table { display: block; overflow-x: auto; white-space: nowrap; } }
