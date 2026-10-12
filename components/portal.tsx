@@ -19,7 +19,7 @@ export function Hero({ eyebrow, title, description }: { eyebrow: string; title: 
 export function DepartmentHub({ compact = false }: { compact?: boolean }) {
   const future = [['Property', 'Property operations and asset coordination'], ['Human Resources', 'People operations and team development'], ['Finance', 'Financial controls and reporting'], ['Operations', 'Cross-functional delivery and process control']]
   return <div className={styles.hub}>
-    <section className={styles.hubHero}><span className={styles.eyebrow}>Internal operations</span><h1>One company.<br /><span>Clear departments.</span></h1><p>Department-specific operating guides for OBAOL Supreme. Start with the active Research & Strategic Opportunities workspace.</p></section>
+    <section className={styles.hubHero}><span className={styles.eyebrow}>Internal operations</span><h1>One company.<br /><span>Clear departments.</span></h1><p>Department-specific operating guides for OBAOL Supreme. Choose an active workspace to understand the roles, workflows and daily operating system.</p></section>
     <div className={styles.sectionLabel}><span>Active departments</span><span>02 live</span></div>
     <div className={styles.activeDepartmentList}><Link href="/departments/research" className={styles.activeDepartment}>
       <div><span className={styles.badge}>RSO · Active</span><h2>Research & Strategic Opportunities</h2><p>Discover, verify and convert opportunities into funding, partnerships, participation and measurable outcomes.</p></div>
