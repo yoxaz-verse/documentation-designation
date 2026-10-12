@@ -1,0 +1,16 @@
+---
+title: "Sales"
+description: "Qualified meetings, requirement discovery and participation-path decisions."
+---
+
+import { DepartmentGuide, SalesPathSelector, StageTracker } from '../../components/company'
+
+<DepartmentGuide id="sales" />
+
+## Meeting outcome and path selection
+
+<SalesPathSelector />
+
+<StageTracker title="Sales meeting progression" storageKey="obaol-sales-stage-v1" stages={['BD Brief Accepted','Meeting Prepared','Requirement Discovered','Platform Explained','Path Selected','Handoff Complete']} />
+
+Sales begins when a qualified meeting starts. BD supplies context and receives the recorded outcome; Sales owns deep discovery, objection handling and the final path decision.

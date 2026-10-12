@@ -1,7 +1,11 @@
 {
   "index": {
-    "title": "Departments",
+    "title": "Company Flow",
     "display": "hidden"
+  },
+  "architecture": {
+    "title": "Flow Architecture",
+    "type": "page"
   },
   "departments": {
     "title": "Departments",
