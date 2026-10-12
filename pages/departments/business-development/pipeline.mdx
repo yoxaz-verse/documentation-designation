@@ -1,0 +1,34 @@
+---
+title: "Pipeline & Handover"
+description: "Qualification, meeting scheduling, Sales handover and feedback loop."
+---
+
+import { BDPipeline, BDQualification, MeetingBriefBuilder, Boundary, SalesFeedback } from '../../../components/bd'
+
+# Pipeline and Sales handover
+
+<BDPipeline />
+
+Negative outcomes remain explicit: **No Response · Not Interested · Not Relevant · Follow-up Later**.
+
+## Qualification checklist
+
+<BDQualification />
+
+If the Associate is relevant, shows real interest and agrees to meet, move the record to Sales scheduling.
+
+## Meeting brief builder
+
+Sales should never enter a meeting without context. Complete this brief before handover.
+
+<MeetingBriefBuilder />
+
+## Ownership boundary
+
+<Boundary />
+
+## Sales feedback loop
+
+<SalesFeedback />
+
+After the meeting, Sales must update the shared record. Otherwise BD may continue contacting the Associate without knowing the result. Maintain one Associate record containing company and contact information, category, products, geography, BD owner, conversation history, status, follow-up date, registration status, meeting details, Sales owner, notes and final outcome.

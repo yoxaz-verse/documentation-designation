@@ -8,6 +8,8 @@
 .hubHero .eyebrow, .hero .eyebrow { color: #9fe5bf; }
 .sectionLabel { display: flex; justify-content: space-between; margin: 3rem 0 1rem; color: #5f7068; font-size: .75rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
 .activeDepartment { display: grid; grid-template-columns: 1.5fr .8fr; gap: 2rem; padding: 2.4rem; color: #fff !important; text-decoration: none !important; border-radius: 22px; background: #102b21; transition: transform .2s, box-shadow .2s; }
+.activeDepartmentList { display: grid; gap: 1rem; }
+.bdDepartment { background: linear-gradient(135deg, #172b40, #184e62); }
 .activeDepartment:hover { transform: translateY(-3px); box-shadow: 0 18px 40px rgba(11,56,40,.18); }
 .activeDepartment h2 { margin: .9rem 0 .55rem !important; color: #fff; font-size: clamp(1.7rem, 3vw, 2.5rem); }
 .activeDepartment p { max-width: 650px; margin: 0; color: #bfd0c8; line-height: 1.65; }
@@ -63,3 +65,130 @@
 @media (max-width: 640px) {
   .hub { padding-top: .5rem; }.hubHero,.hero { padding: 2.2rem 1.4rem; border-radius: 18px; }.hubHero h1 { font-size: 3rem; }.activeDepartment { grid-template-columns: 1fr; padding: 1.5rem; }.activeStats { padding: 1rem 0 0; border-left: 0; border-top: 1px solid #365248; }.departmentGrid,.threeSteps,.outcomeGrid,.orgColumns,.databaseGrid,.rhythm { grid-template-columns: 1fr; }.metricStrip { grid-template-columns: 1fr 1fr; margin: -2rem .65rem 2rem; }.metricStrip div { border-right: 0; border-bottom: 1px solid #e2ebe6; }.metricStrip div:nth-last-child(-n+2) { border-bottom: 0; }.heroActions { align-items: stretch; flex-direction: column; }.detailCard summary { align-items: flex-start; }.detailBody { padding-left: 1.25rem; }.steps { grid-template-columns: 1fr; }.steps > div,.steps > div:last-child { grid-column: auto; min-height: auto; }.checkGrid,.taskList { grid-template-columns: 1fr; }.taskList label:last-child { grid-column: auto; }.scorecard { gap: .8rem; }.lifecycle { grid-template-columns: 1fr 1fr; }.fieldRow { grid-template-columns: 1fr; gap: 0; }.kpiGrid { grid-template-columns: 1fr 1fr; }.roadmap > div { grid-template-columns: 82px 1fr; }.tabContent { padding: 1.3rem; }
 }
+
+/* Custom content does not inherit Nextra's surface tokens. Keep the light palette
+   explicit, then provide a matching palette when Nextra adds .dark to <html>. */
+.futureDepartment,
+.metricStrip,
+.outcomeGrid > div,
+.orgTop,
+.orgLead,
+.detailCard,
+.tabPanel,
+.taskTool,
+.toolCard,
+.scoreInputs,
+.databaseGrid > div,
+.reportForm {
+  color: #17221d;
+}
+
+.futureDepartment h3,
+.outcomeGrid h3,
+.detailCard summary b,
+.tabContent h3,
+.toolHeader h3,
+.taskHeader h3,
+.databaseGrid b,
+.scoreInputs b {
+  color: #17221d !important;
+}
+
+.futureDepartment h3 { color: #263b32 !important; }
+.departmentNumber { color: #88a096; }
+
+:global(html.dark) .sectionLabel { color: #91a29a; }
+:global(html.dark) .futureDepartment,
+:global(html.dark) .metricStrip,
+:global(html.dark) .outcomeGrid > div,
+:global(html.dark) .detailCard,
+:global(html.dark) .tabPanel,
+:global(html.dark) .taskTool,
+:global(html.dark) .toolCard,
+:global(html.dark) .scoreInputs,
+:global(html.dark) .databaseGrid > div,
+:global(html.dark) .reportForm,
+:global(html.dark) .lifecycle div {
+  color: #e5eee9;
+  border-color: #30433a;
+  background: #16211c;
+}
+
+:global(html.dark) .futureDepartment h3,
+:global(html.dark) .outcomeGrid h3,
+:global(html.dark) .detailCard summary b,
+:global(html.dark) .tabContent h3,
+:global(html.dark) .toolHeader h3,
+:global(html.dark) .taskHeader h3,
+:global(html.dark) .databaseGrid b,
+:global(html.dark) .scoreInputs b {
+  color: #f0f6f3 !important;
+}
+
+:global(html.dark) .futureDepartment p,
+:global(html.dark) .outcomeGrid p,
+:global(html.dark) .detailCard summary small,
+:global(html.dark) .detailBody p,
+:global(html.dark) .tabContent li,
+:global(html.dark) .legend,
+:global(html.dark) .databaseGrid p,
+:global(html.dark) .scoreInputs small,
+:global(html.dark) .reportForm > label,
+:global(html.dark) .fieldRow label,
+:global(html.dark) .roadmap p,
+:global(html.dark) .exampleFlow p {
+  color: #aebdb5;
+}
+
+:global(html.dark) .metricStrip span { color: #aebdb5; }
+:global(html.dark) .metricStrip,
+:global(html.dark) .metricStrip div { border-color: #30433a; }
+:global(html.dark) .org { background: #111b17; }
+:global(html.dark) .orgTop,
+:global(html.dark) .orgLead {
+  color: #e5eee9;
+  border-color: #30433a;
+  background: #1a2821;
+}
+:global(html.dark) .orgTop span,
+:global(html.dark) .orgLead span { color: #aebdb5; }
+:global(html.dark) .principle { background: #14271e; }
+:global(html.dark) .principle span { color: #a7bdb2; }
+:global(html.dark) .principle strong { color: #8de0b4; }
+:global(html.dark) .code,
+:global(html.dark) .tableCode { color: #83dfae; background: #193b2b; }
+:global(html.dark) .handoff { background: #1b3026; }
+:global(html.dark) .tableWrap { border-color: #30433a; }
+:global(html.dark) .steps > div,
+:global(html.dark) .copyBlock,
+:global(html.dark) .tabList,
+:global(html.dark) .checkGrid label,
+:global(html.dark) .taskList label,
+:global(html.dark) .rhythm div {
+  color: #e5eee9;
+  border-color: #30433a;
+  background: #17231d;
+}
+:global(html.dark) .steps p,
+:global(html.dark) .rhythm p { color: #aebdb5; }
+:global(html.dark) .copyBlock code { color: #d8e5de; }
+:global(html.dark) .copyBlock button,
+:global(html.dark) .textButton,
+:global(html.dark) .scoreInputs select,
+:global(html.dark) .reportForm input,
+:global(html.dark) .reportForm textarea {
+  color: #e5eee9;
+  border-color: #40564b;
+  background: #101914;
+}
+:global(html.dark) .tabList { border-bottom-color: #30433a; }
+:global(html.dark) .tabList button { color: #b8c7bf; }
+:global(html.dark) .tabList .activeTab { color: #fff; background: #147653; }
+:global(html.dark) .raci { color: #dbe5e0; background: #29372f; }
+:global(html.dark) .accountable { color: #85dfaf; background: #183a2a; }
+:global(html.dark) .lifecycle { border-color: #30433a; background: #30433a; }
+:global(html.dark) .progress { background: #2a3931; }
+:global(html.dark) .checkGrid .checked,
+:global(html.dark) .taskList .checked { color: #8fa098; background: #1a3025; }
+:global(html.dark) .roadmap > div,
+:global(html.dark) .kpiGrid div { border-color: #30433a; }

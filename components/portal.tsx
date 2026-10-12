@@ -20,11 +20,15 @@ export function DepartmentHub({ compact = false }: { compact?: boolean }) {
   const future = [['Property', 'Property operations and asset coordination'], ['Human Resources', 'People operations and team development'], ['Finance', 'Financial controls and reporting'], ['Operations', 'Cross-functional delivery and process control']]
   return <div className={styles.hub}>
     <section className={styles.hubHero}><span className={styles.eyebrow}>Internal operations</span><h1>One company.<br /><span>Clear departments.</span></h1><p>Department-specific operating guides for OBAOL Supreme. Start with the active Research & Strategic Opportunities workspace.</p></section>
-    <div className={styles.sectionLabel}><span>Active department</span><span>01 live</span></div>
-    <Link href="/departments/research" className={styles.activeDepartment}>
+    <div className={styles.sectionLabel}><span>Active departments</span><span>02 live</span></div>
+    <div className={styles.activeDepartmentList}><Link href="/departments/research" className={styles.activeDepartment}>
       <div><span className={styles.badge}>RSO · Active</span><h2>Research & Strategic Opportunities</h2><p>Discover, verify and convert opportunities into funding, partnerships, participation and measurable outcomes.</p></div>
       <div className={styles.activeStats}><span><b>4</b> research functions</span><span><b>3</b> execution functions</span><span className={styles.arrow}>Explore department →</span></div>
     </Link>
+    <Link href="/departments/business-development" className={`${styles.activeDepartment} ${styles.bdDepartment}`}>
+      <div><span className={styles.badge}>BD · Active</span><h2>Business Development</h2><p>Identify the right Associates, build relevant conversations, qualify interest and generate meetings for Sales.</p></div>
+      <div className={styles.activeStats}><span><b>12</b> associate types</span><span><b>1</b> sales handover</span><span className={styles.arrow}>Explore department →</span></div>
+    </Link></div>
     <div className={styles.sectionLabel}><span>Department roadmap</span><span>Coming soon</span></div>
     <div className={styles.departmentGrid}>{future.map(([name, description], i) => <div className={styles.futureDepartment} key={name} aria-disabled="true"><span className={styles.departmentNumber}>0{i + 2}</span><h3>{name}</h3><p>{description}</p><span className={styles.soon}>Coming soon</span></div>)}</div>
     {!compact && <section className={styles.howItWorks}><div><span className={styles.eyebrow}>How to use this portal</span><h2>Guidance that moves work forward</h2></div><div className={styles.threeSteps}>{[['01', 'Understand', 'Learn the mission, roles and ownership model.'], ['02', 'Execute', 'Follow verified procedures, handoffs and approvals.'], ['03', 'Measure', 'Record activity, outcomes and next actions.']].map(x => <div key={x[0]}><b>{x[0]}</b><h3>{x[1]}</h3><p>{x[2]}</p></div>)}</div></section>}
