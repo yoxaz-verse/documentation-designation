@@ -2,40 +2,86 @@ import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import styles from './company.module.css'
 
-type Node = { id:string; short:string; title:string; purpose:string; owner:string; input:string; output:string; exit:string; next:string; href:string; tone:string }
-
-const nodes: Node[] = [
-  { id:'lead', short:'01', title:'Lead Acquisition', purpose:'Create relevant, traceable lead records from controlled acquisition channels.', owner:'Lead Acquisition + BD', input:'Target segment or campaign brief', output:'Verified lead in the central pool', exit:'Owner, source, relevance and next action recorded', next:'Business Development', href:'/departments/lead-acquisition', tone:'amber' },
-  { id:'bd', short:'02', title:'Business Development', purpose:'Build the first relationship, establish relevance and schedule a qualified meeting.', owner:'BDA / BD Lead', input:'Allocated verified lead', output:'Qualified scheduled meeting with context', exit:'Associate agrees to meet and the Sales brief is complete', next:'Sales', href:'/departments/business-development', tone:'navy' },
-  { id:'sales', short:'03', title:'Sales', purpose:'Discover requirements, explain the ecosystem and select the correct participation path.', owner:'Sales Team', input:'Qualified meeting and BD context', output:'Associate path, Operator path or closed outcome', exit:'Requirement and path decision recorded', next:'Associate Onboarding or Operator Operations', href:'/departments/sales', tone:'blue' },
-  { id:'associate', short:'04A', title:'Associate Onboarding', purpose:'Verify and prepare businesses to participate as OBAOL Associates.', owner:'Associate Support', input:'Sales-qualified Associate', output:'Active Associate ready to participate', exit:'Verification and onboarding checklist complete', next:'Execution Ecosystem', href:'/departments/associate-onboarding', tone:'gold' },
-  { id:'operator', short:'04B', title:'Operator Operations', purpose:'Verify, prepare and support professionals for on-ground execution work.', owner:'Operator Operations', input:'Sales-qualified Operator', output:'Task-ready member of the active operator pool', exit:'Profile, verification and readiness complete', next:'Execution Ecosystem', href:'/departments/operator-operations', tone:'sky' },
-  { id:'execution', short:'05', title:'Execution Ecosystem', purpose:'Move enquiries through matching, verification, coordinated execution and closure.', owner:'Execution Teams', input:'Enquiry or approved participation requirement', output:'Monitored and documented outcome', exit:'Work closed with status, evidence and outcome', next:'Reporting + relationship follow-up', href:'/departments/execution-ecosystem', tone:'green' }
-]
-
-const support = [
-  { title:'Human Resources', text:'Recruitment, staff onboarding, attendance, performance and HR documentation.', href:'/departments/human-resources' },
-  { title:"Founder’s Office", text:'Strategic direction, escalations, cross-team coordination and performance review.', href:'/departments/founders-office' },
-  { title:'Administration & Tools', text:'Internal systems, process documentation, reporting and analytics.', href:'/departments/administration-tools' }
-]
-
-export function CompanyArchitecture({ full=false }:{full?:boolean}) {
-  const [selected,setSelected]=useState('lead'); const item=nodes.find(n=>n.id===selected)!
-  return <div className={`${styles.architecture} ${full?styles.full:''}`}>
-    <section className={styles.archHero}><div><span>OBAOL Supreme · Operating system</span><h1>Department Flow<br/><em>Architecture</em></h1><p>From the first signal of interest to verified participation and real B2B agro-trade execution.</p></div><aside><b>Connect</b><i>→</i><b>Execute</b><i>→</i><b>Grow</b></aside></section>
-    <div className={styles.legend}><span>Follow the flow</span><span>Choose a stage to inspect its ownership and handoff</span></div>
-    <section className={styles.flowMap} aria-label="Company operating flow">
-      {nodes.slice(0,3).map((n,i)=><FlowNode key={n.id} node={n} active={selected===n.id} onClick={()=>setSelected(n.id)} arrow={i<2}/>) }
-      <div className={styles.branch}><span>Choose one participation path · both feed execution</span><div><FlowNode node={nodes[3]} active={selected==='associate'} onClick={()=>setSelected('associate')}/><FlowNode node={nodes[4]} active={selected==='operator'} onClick={()=>setSelected('operator')}/></div></div>
-      <FlowNode node={nodes[5]} active={selected==='execution'} onClick={()=>setSelected('execution')} />
-    </section>
-    <section className={styles.inspector} aria-live="polite"><header><span className={styles.stage}>{item.short}</span><div><small>Selected stage</small><h2>{item.title}</h2></div><Link href={item.href}>Open department →</Link></header><p>{item.purpose}</p><div className={styles.inspectorGrid}><div><small>Accountable owner</small><b>{item.owner}</b></div><div><small>Required input</small><b>{item.input}</b></div><div><small>Required output</small><b>{item.output}</b></div><div><small>Exit criteria</small><b>{item.exit}</b></div></div><footer><span>Next owner</span><strong>{item.next}</strong></footer></section>
-    <section className={styles.support}><header><span>06</span><div><h2>Supporting departments</h2><p>Enable every stage without replacing the accountable operating owner.</p></div></header><div>{support.map(x=><Link href={x.href} key={x.title}><b>{x.title}</b><span>{x.text}</span><i>Open guide →</i></Link>)}</div></section>
-    {!full&&<div className={styles.archActions}><Link href="/architecture">Open full architecture</Link><Link href="/departments">Browse departments</Link></div>}
-  </div>
+type Department = {
+  code: string
+  title: string
+  purpose: string
+  owner: string
+  href: string
 }
 
-function FlowNode({node,active,onClick,arrow=false}:{node:Node;active:boolean;onClick:()=>void;arrow?:boolean}) { return <div className={styles.nodeWrap}><button className={`${styles.flowNode} ${styles[node.tone]} ${active?styles.active:''}`} onClick={onClick} aria-pressed={active}><span>{node.short}</span><b>{node.title}</b><small>{node.owner}</small></button>{arrow&&<i className={styles.arrow}>→</i>}</div> }
+type DepartmentGroup = {
+  id: string
+  number: string
+  title: string
+  description: string
+  departments: Department[]
+}
+
+const departmentGroups: DepartmentGroup[] = [
+  {
+    id: 'leadership', number: '01', title: 'Leadership & Strategy',
+    description: 'Sets direction, evaluates opportunities and coordinates decisions across the company.',
+    departments: [
+      { code: 'FO', title: "Founder’s Office", purpose: 'Strategic direction, approvals, escalations and cross-team accountability.', owner: 'Founder / Management', href: '/departments/founders-office' },
+      { code: 'RSO', title: 'Research & Strategic Opportunities', purpose: 'Find and convert funding, ecosystem, institutional and visibility opportunities.', owner: 'RSO Coordinator', href: '/departments/research' },
+    ],
+  },
+  {
+    id: 'growth', number: '02', title: 'Growth & Commercial',
+    description: 'Creates relevant opportunities, builds relationships and turns qualified interest into clear outcomes.',
+    departments: [
+      { code: 'LA', title: 'Lead Acquisition', purpose: 'Creates relevant, traceable leads from controlled acquisition channels.', owner: 'Lead Acquisition', href: '/departments/lead-acquisition' },
+      { code: 'BD', title: 'Business Development', purpose: 'Starts relevant conversations and schedules qualified meetings for Sales.', owner: 'BD Team', href: '/departments/business-development' },
+      { code: 'SA', title: 'Sales', purpose: 'Discovers requirements and determines the correct participation or trade path.', owner: 'Sales Team', href: '/departments/sales' },
+    ],
+  },
+  {
+    id: 'operations', number: '03', title: 'Participation & Trade Operations',
+    description: 'Prepares ecosystem participants and coordinates structured agro-trade execution.',
+    departments: [
+      { code: 'AO', title: 'Associate Onboarding', purpose: 'Verifies and prepares businesses to participate as OBAOL Associates.', owner: 'Associate Support', href: '/departments/associate-onboarding' },
+      { code: 'OO', title: 'Operator Operations', purpose: 'Verifies and prepares professionals for defined on-ground execution work.', owner: 'Operator Operations', href: '/departments/operator-operations' },
+      { code: 'EX', title: 'Execution Ecosystem', purpose: 'Coordinates enquiries through matching, verification, execution and closure.', owner: 'Execution Teams', href: '/departments/execution-ecosystem' },
+    ],
+  },
+  {
+    id: 'support', number: '04', title: 'Corporate Support',
+    description: 'Provides the financial knowledge, people systems and internal tools every function relies on.',
+    departments: [
+      { code: 'FI', title: 'Trade Financial Terms', purpose: 'Explains transaction value, execution costs, payment terms and margin concepts.', owner: 'Finance Knowledge', href: '/departments/finance' },
+      { code: 'HR', title: 'Human Resources', purpose: 'Supports recruitment, staff onboarding, records and performance processes.', owner: 'HR Team', href: '/departments/human-resources' },
+      { code: 'AT', title: 'Administration & Tools', purpose: 'Maintains internal systems, documentation, handoffs, reporting and analytics.', owner: 'Administration', href: '/departments/administration-tools' },
+    ],
+  },
+]
+
+export function DepartmentStructureMap() {
+  return <div className={styles.architecture}>
+    <section className={styles.archHero}>
+      <div><span>OBAOL Supreme · Department directory</span><h1>One company.<br/><em>Clear departments.</em></h1><p>Choose a functional area, then open the department responsible for that work. Each department has its own roles, workflow and operating guide.</p></div>
+      <aside><span>11</span><b>Active workspaces</b><small>Four functional groups</small></aside>
+    </section>
+
+    <section className={styles.mapIntro}>
+      <div><span>Company structure</span><h2>How the departments fit together</h2></div>
+      <p>This is a functional map—not a single process flow or a formal employee reporting chart. Departments collaborate, but each operates its own workflow.</p>
+    </section>
+
+    <div className={styles.departmentMap}>
+      {departmentGroups.map(group => <section className={`${styles.departmentGroup} ${styles[group.id]}`} key={group.id} aria-labelledby={`${group.id}-title`}>
+        <header><span>{group.number}</span><div><h2 id={`${group.id}-title`}>{group.title}</h2><p>{group.description}</p></div></header>
+        <div className={styles.departmentCards}>{group.departments.map(department => <Link href={department.href} className={styles.departmentCard} key={department.href} aria-label={`Open ${department.title} department`}>
+          <div className={styles.cardTop}><span>{department.code}</span><i aria-hidden="true">↗</i></div>
+          <h3>{department.title}</h3><p>{department.purpose}</p>
+          <footer><span>Accountable function</span><b>{department.owner}</b><strong>Open department →</strong></footer>
+        </Link>)}</div>
+      </section>)}
+    </div>
+
+    <aside className={styles.mapNote}><b>Use the map as your starting point.</b><span>Open the department that owns the work. Use cross-department handoffs only when responsibility moves between teams.</span></aside>
+  </div>
+}
 
 const departmentData: Record<string, any> = {
   'lead-acquisition': { code:'ACQUIRE · 01', title:'Lead Acquisition', intro:'Generate relevant, attributable leads and place them in one controlled pool for BD allocation.', color:'amber', roles:[['Channel Owner','Defines target segments and reviews source quality.'],['Lead Research','Finds expo, event and participant records without replacing Strategic Research.'],['Campaign Contributors','Social/eMarketing and email teams generate inbound and outbound interest.'],['BD Lead','Allocates leads and prevents duplicate outreach.']], stages:['Define target','Source lead','Verify identity','Check duplicate','Record source','Assign BD owner'], daily:['Review target segments','Research approved sources','Validate contact and business information','Check the central pool for duplicates','Record source evidence and relevance','Allocate or request allocation','Report source quality and blockers'], statuses:['New','Under Verification','Verified','Allocated','Duplicate','Not Relevant'], kpis:['Leads Added','Verification Rate','Duplicate Rate','Allocation Time','BD Acceptance'], handoff:'A lead exits only with source, category, relevance, owner and next action recorded.' },

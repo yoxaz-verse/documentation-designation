@@ -1,15 +1,15 @@
 {
   "index": {
-    "title": "Company Flow",
-    "display": "hidden"
+    "title": "Department Map",
+    "type": "page"
   },
   "architecture": {
-    "title": "Flow Architecture",
-    "type": "page"
+    "title": "Department Map",
+    "display": "hidden"
   },
   "departments": {
     "title": "Departments",
-    "type": "page"
+    "display": "hidden"
   },
   "about": {
     "title": "OBAOL Website ↗",

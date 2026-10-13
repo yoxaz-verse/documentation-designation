@@ -17,7 +17,6 @@ export function Hero({ eyebrow, title, description }: { eyebrow: string; title: 
 }
 
 export function DepartmentHub({ compact = false }: { compact?: boolean }) {
-  const future = [['Property', 'Property operations and asset coordination']]
   const operating = [
     ['/departments/lead-acquisition','Lead Acquisition','Acquire','Four channels · one lead pool'],
     ['/departments/sales','Sales','Convert','Meeting · requirement · path'],
@@ -41,8 +40,6 @@ export function DepartmentHub({ compact = false }: { compact?: boolean }) {
       <div className={styles.activeStats}><span><b>12</b> associate types</span><span><b>1</b> sales handover</span><span className={styles.arrow}>Explore department →</span></div>
     </Link></div>
     <div className={styles.workspaceGrid}>{operating.map(x=><Link href={x[0]} key={x[0]}><span>{x[2]}</span><h3>{x[1]}</h3><p>{x[3]}</p><b>Open workspace →</b></Link>)}</div>
-    <div className={styles.sectionLabel}><span>Department roadmap</span><span>Coming soon</span></div>
-    <div className={styles.departmentGrid}>{future.map(([name, description], i) => <div className={styles.futureDepartment} key={name} aria-disabled="true"><span className={styles.departmentNumber}>{i + 11}</span><h3>{name}</h3><p>{description}</p><span className={styles.soon}>Coming soon</span></div>)}</div>
     {!compact && <section className={styles.howItWorks}><div><span className={styles.eyebrow}>How to use this portal</span><h2>Guidance that moves work forward</h2></div><div className={styles.threeSteps}>{[['01', 'Understand', 'Learn the mission, roles and ownership model.'], ['02', 'Execute', 'Follow verified procedures, handoffs and approvals.'], ['03', 'Measure', 'Record activity, outcomes and next actions.']].map(x => <div key={x[0]}><b>{x[0]}</b><h3>{x[1]}</h3><p>{x[2]}</p></div>)}</div></section>}
   </div>
 }
