@@ -17,20 +17,21 @@ export function Hero({ eyebrow, title, description }: { eyebrow: string; title: 
 }
 
 export function DepartmentHub({ compact = false }: { compact?: boolean }) {
-  const future = [['Property', 'Property operations and asset coordination'], ['Finance', 'Financial controls and reporting']]
+  const future = [['Property', 'Property operations and asset coordination']]
   const operating = [
     ['/departments/lead-acquisition','Lead Acquisition','Acquire','Four channels · one lead pool'],
     ['/departments/sales','Sales','Convert','Meeting · requirement · path'],
     ['/departments/associate-onboarding','Associate Onboarding','Onboard','Verify · support · activate'],
     ['/departments/operator-operations','Operator Operations','Onboard','Verify · prepare · assign'],
     ['/departments/execution-ecosystem','Execution Ecosystem','Execute','Enquiry · match · deliver'],
+    ['/departments/finance','Trade Financial Terms','Finance · Active','Value · costs · payment · margin'],
     ['/departments/human-resources','Human Resources','Support','People · records · performance'],
     ['/departments/founders-office',"Founder's Office",'Support','Direction · escalation · review'],
     ['/departments/administration-tools','Administration & Tools','Support','Systems · process · reporting']
   ]
   return <div className={styles.hub}>
     <section className={styles.hubHero}><span className={styles.eyebrow}>Internal operations</span><h1>One company.<br /><span>Clear departments.</span></h1><p>Department-specific operating guides for OBAOL Supreme. Choose an active workspace to understand the roles, workflows and daily operating system.</p></section>
-    <div className={styles.sectionLabel}><span>Core workspaces</span><span>10 live</span></div>
+    <div className={styles.sectionLabel}><span>Core workspaces</span><span>11 live</span></div>
     <div className={styles.activeDepartmentList}><Link href="/departments/research" className={styles.activeDepartment}>
       <div><span className={styles.badge}>RSO · Active</span><h2>Research & Strategic Opportunities</h2><p>Discover, verify and convert opportunities into funding, partnerships, participation and measurable outcomes.</p></div>
       <div className={styles.activeStats}><span><b>4</b> research functions</span><span><b>3</b> execution functions</span><span className={styles.arrow}>Explore department →</span></div>

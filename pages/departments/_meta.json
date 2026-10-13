@@ -12,6 +12,7 @@
   "execute": { "title": "Execute", "type": "separator" },
   "execution-ecosystem": "Execution Ecosystem",
   "support": { "title": "Support", "type": "separator" },
+  "finance": "Trade Financial Terms",
   "human-resources": "Human Resources",
   "founders-office": "Founder's Office",
   "administration-tools": "Administration & Tools"
